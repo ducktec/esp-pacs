@@ -18,3 +18,29 @@ GPIO:
       "DATA":
         access: read-write
         name: data_next
+
+I2C0:
+  DATA:
+    _modify:
+      FIFO_RDATA:
+        access: read-write
+
+DPORT:
+  PERIP_RST_EN:
+    _delete:
+      - PERIP_RST
+    _add:
+      I2C0:
+        description: Reset Bit I2C0 Peripheral
+        bitOffset: 7
+        bitWidth: 1
+        access: read-write
+  PERIP_CLK_EN:
+    _delete:
+      - PERIP_CLK_EN
+    _add:
+      I2C0:
+        description: Enable Bit for I2C0 Peripheral
+        bitOffset: 7
+        bitWidth: 1
+        access: read-write
