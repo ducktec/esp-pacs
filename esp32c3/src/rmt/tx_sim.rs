@@ -34,26 +34,26 @@ impl From<crate::W<TX_SIM_SPEC>> for W {
         W(writer)
     }
 }
-#[doc = "Field `RMT_TX_SIM_CH0` reader - reg_rmt_tx_sim_ch0."]
-pub struct RMT_TX_SIM_CH0_R(crate::FieldReader<bool, bool>);
-impl RMT_TX_SIM_CH0_R {
+#[doc = "Field `TX_SIM_CH0` reader - reg_rmt_tx_sim_ch0."]
+pub struct TX_SIM_CH0_R(crate::FieldReader<bool, bool>);
+impl TX_SIM_CH0_R {
     #[inline(always)]
     pub(crate) fn new(bits: bool) -> Self {
-        RMT_TX_SIM_CH0_R(crate::FieldReader::new(bits))
+        TX_SIM_CH0_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for RMT_TX_SIM_CH0_R {
+impl core::ops::Deref for TX_SIM_CH0_R {
     type Target = crate::FieldReader<bool, bool>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
-#[doc = "Field `RMT_TX_SIM_CH0` writer - reg_rmt_tx_sim_ch0."]
-pub struct RMT_TX_SIM_CH0_W<'a> {
+#[doc = "Field `TX_SIM_CH0` writer - reg_rmt_tx_sim_ch0."]
+pub struct TX_SIM_CH0_W<'a> {
     w: &'a mut W,
 }
-impl<'a> RMT_TX_SIM_CH0_W<'a> {
+impl<'a> TX_SIM_CH0_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -71,26 +71,26 @@ impl<'a> RMT_TX_SIM_CH0_W<'a> {
         self.w
     }
 }
-#[doc = "Field `RMT_TX_SIM_CH1` reader - reg_rmt_tx_sim_ch1."]
-pub struct RMT_TX_SIM_CH1_R(crate::FieldReader<bool, bool>);
-impl RMT_TX_SIM_CH1_R {
+#[doc = "Field `TX_SIM_CH1` reader - reg_rmt_tx_sim_ch1."]
+pub struct TX_SIM_CH1_R(crate::FieldReader<bool, bool>);
+impl TX_SIM_CH1_R {
     #[inline(always)]
     pub(crate) fn new(bits: bool) -> Self {
-        RMT_TX_SIM_CH1_R(crate::FieldReader::new(bits))
+        TX_SIM_CH1_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for RMT_TX_SIM_CH1_R {
+impl core::ops::Deref for TX_SIM_CH1_R {
     type Target = crate::FieldReader<bool, bool>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
-#[doc = "Field `RMT_TX_SIM_CH1` writer - reg_rmt_tx_sim_ch1."]
-pub struct RMT_TX_SIM_CH1_W<'a> {
+#[doc = "Field `TX_SIM_CH1` writer - reg_rmt_tx_sim_ch1."]
+pub struct TX_SIM_CH1_W<'a> {
     w: &'a mut W,
 }
-impl<'a> RMT_TX_SIM_CH1_W<'a> {
+impl<'a> TX_SIM_CH1_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -108,26 +108,26 @@ impl<'a> RMT_TX_SIM_CH1_W<'a> {
         self.w
     }
 }
-#[doc = "Field `RMT_TX_SIM_EN` reader - reg_rmt_tx_sim_en."]
-pub struct RMT_TX_SIM_EN_R(crate::FieldReader<bool, bool>);
-impl RMT_TX_SIM_EN_R {
+#[doc = "Field `TX_SIM_EN` reader - reg_rmt_tx_sim_en."]
+pub struct TX_SIM_EN_R(crate::FieldReader<bool, bool>);
+impl TX_SIM_EN_R {
     #[inline(always)]
     pub(crate) fn new(bits: bool) -> Self {
-        RMT_TX_SIM_EN_R(crate::FieldReader::new(bits))
+        TX_SIM_EN_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for RMT_TX_SIM_EN_R {
+impl core::ops::Deref for TX_SIM_EN_R {
     type Target = crate::FieldReader<bool, bool>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
-#[doc = "Field `RMT_TX_SIM_EN` writer - reg_rmt_tx_sim_en."]
-pub struct RMT_TX_SIM_EN_W<'a> {
+#[doc = "Field `TX_SIM_EN` writer - reg_rmt_tx_sim_en."]
+pub struct TX_SIM_EN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> RMT_TX_SIM_EN_W<'a> {
+impl<'a> TX_SIM_EN_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -148,35 +148,35 @@ impl<'a> RMT_TX_SIM_EN_W<'a> {
 impl R {
     #[doc = "Bit 0 - reg_rmt_tx_sim_ch0."]
     #[inline(always)]
-    pub fn rmt_tx_sim_ch0(&self) -> RMT_TX_SIM_CH0_R {
-        RMT_TX_SIM_CH0_R::new((self.bits & 1) != 0)
+    pub fn tx_sim_ch0(&self) -> TX_SIM_CH0_R {
+        TX_SIM_CH0_R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - reg_rmt_tx_sim_ch1."]
     #[inline(always)]
-    pub fn rmt_tx_sim_ch1(&self) -> RMT_TX_SIM_CH1_R {
-        RMT_TX_SIM_CH1_R::new(((self.bits >> 1) & 1) != 0)
+    pub fn tx_sim_ch1(&self) -> TX_SIM_CH1_R {
+        TX_SIM_CH1_R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - reg_rmt_tx_sim_en."]
     #[inline(always)]
-    pub fn rmt_tx_sim_en(&self) -> RMT_TX_SIM_EN_R {
-        RMT_TX_SIM_EN_R::new(((self.bits >> 2) & 1) != 0)
+    pub fn tx_sim_en(&self) -> TX_SIM_EN_R {
+        TX_SIM_EN_R::new(((self.bits >> 2) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - reg_rmt_tx_sim_ch0."]
     #[inline(always)]
-    pub fn rmt_tx_sim_ch0(&mut self) -> RMT_TX_SIM_CH0_W {
-        RMT_TX_SIM_CH0_W { w: self }
+    pub fn tx_sim_ch0(&mut self) -> TX_SIM_CH0_W {
+        TX_SIM_CH0_W { w: self }
     }
     #[doc = "Bit 1 - reg_rmt_tx_sim_ch1."]
     #[inline(always)]
-    pub fn rmt_tx_sim_ch1(&mut self) -> RMT_TX_SIM_CH1_W {
-        RMT_TX_SIM_CH1_W { w: self }
+    pub fn tx_sim_ch1(&mut self) -> TX_SIM_CH1_W {
+        TX_SIM_CH1_W { w: self }
     }
     #[doc = "Bit 2 - reg_rmt_tx_sim_en."]
     #[inline(always)]
-    pub fn rmt_tx_sim_en(&mut self) -> RMT_TX_SIM_EN_W {
-        RMT_TX_SIM_EN_W { w: self }
+    pub fn tx_sim_en(&mut self) -> TX_SIM_EN_W {
+        TX_SIM_EN_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]

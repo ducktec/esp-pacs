@@ -19,11 +19,12 @@ impl From<crate::W<INT_CLR_SPEC>> for W {
         W(writer)
     }
 }
-#[doc = "Field `CH0_TX_END_INT_CLR` writer - Set this bit to clear the CH0_TX_END_INT interrupt."]
-pub struct CH0_TX_END_INT_CLR_W<'a> {
+#[doc = "Fields `CH(0-3)_TX_END_INT_CLR` writer - Set this bit to clear the CH%s_TX_END_INT interrupt."]
+pub struct CH_TX_END_INT_CLR_W<'a> {
     w: &'a mut W,
+    offset: usize,
 }
-impl<'a> CH0_TX_END_INT_CLR_W<'a> {
+impl<'a> CH_TX_END_INT_CLR_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -37,15 +38,16 @@ impl<'a> CH0_TX_END_INT_CLR_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !1) | (value as u32 & 1);
+        self.w.bits = (self.w.bits & !(1 << self.offset)) | ((value as u32 & 1) << self.offset);
         self.w
     }
 }
-#[doc = "Field `CH0_RX_END_INT_CLR` writer - Set this bit to clear the CH0_RX_END_INT interrupt."]
-pub struct CH0_RX_END_INT_CLR_W<'a> {
+#[doc = "Fields `CH(0-3)_RX_END_INT_CLR` writer - Set this bit to clear the CH%s_RX_END_INT interrupt."]
+pub struct CH_RX_END_INT_CLR_W<'a> {
     w: &'a mut W,
+    offset: usize,
 }
-impl<'a> CH0_RX_END_INT_CLR_W<'a> {
+impl<'a> CH_RX_END_INT_CLR_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -59,15 +61,16 @@ impl<'a> CH0_RX_END_INT_CLR_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 1)) | ((value as u32 & 1) << 1);
+        self.w.bits = (self.w.bits & !(1 << self.offset)) | ((value as u32 & 1) << self.offset);
         self.w
     }
 }
-#[doc = "Field `CH0_ERR_INT_CLR` writer - Set this bit to clear the CH0_ERR_INT interrupt."]
-pub struct CH0_ERR_INT_CLR_W<'a> {
+#[doc = "Fields `CH(0-3)_ERR_INT_CLR` writer - Set this bit to clear the CH%s_ERR_INT interrupt."]
+pub struct CH_ERR_INT_CLR_W<'a> {
     w: &'a mut W,
+    offset: usize,
 }
-impl<'a> CH0_ERR_INT_CLR_W<'a> {
+impl<'a> CH_ERR_INT_CLR_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -81,15 +84,16 @@ impl<'a> CH0_ERR_INT_CLR_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 2)) | ((value as u32 & 1) << 2);
+        self.w.bits = (self.w.bits & !(1 << self.offset)) | ((value as u32 & 1) << self.offset);
         self.w
     }
 }
-#[doc = "Field `CH1_TX_END_INT_CLR` writer - Set this bit to clear the CH1_TX_END_INT interrupt."]
-pub struct CH1_TX_END_INT_CLR_W<'a> {
+#[doc = "Fields `CH(0-3)_TX_THR_EVENT_INT_CLR` writer - Set this bit to clear the CH%s_TX_THR_EVENT_INT interrupt."]
+pub struct CH_TX_THR_EVENT_INT_CLR_W<'a> {
     w: &'a mut W,
+    offset: usize,
 }
-impl<'a> CH1_TX_END_INT_CLR_W<'a> {
+impl<'a> CH_TX_THR_EVENT_INT_CLR_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -103,15 +107,16 @@ impl<'a> CH1_TX_END_INT_CLR_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 3)) | ((value as u32 & 1) << 3);
+        self.w.bits = (self.w.bits & !(1 << self.offset)) | ((value as u32 & 1) << self.offset);
         self.w
     }
 }
-#[doc = "Field `CH1_RX_END_INT_CLR` writer - Set this bit to clear the CH1_RX_END_INT interrupt."]
-pub struct CH1_RX_END_INT_CLR_W<'a> {
+#[doc = "Fields `CH(0-3)_TX_LOOP_INT_CLR` writer - Set this bit to clear the CH%s_TX_LOOP_INT interrupt."]
+pub struct CH_TX_LOOP_INT_CLR_W<'a> {
     w: &'a mut W,
+    offset: usize,
 }
-impl<'a> CH1_RX_END_INT_CLR_W<'a> {
+impl<'a> CH_TX_LOOP_INT_CLR_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -125,440 +130,180 @@ impl<'a> CH1_RX_END_INT_CLR_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 4)) | ((value as u32 & 1) << 4);
-        self.w
-    }
-}
-#[doc = "Field `CH1_ERR_INT_CLR` writer - Set this bit to clear the CH1_ERR_INT interrupt."]
-pub struct CH1_ERR_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH1_ERR_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 5)) | ((value as u32 & 1) << 5);
-        self.w
-    }
-}
-#[doc = "Field `CH2_TX_END_INT_CLR` writer - Set this bit to clear the CH2_TX_END_INT interrupt."]
-pub struct CH2_TX_END_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH2_TX_END_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 6)) | ((value as u32 & 1) << 6);
-        self.w
-    }
-}
-#[doc = "Field `CH2_RX_END_INT_CLR` writer - Set this bit to clear the CH2_RX_END_INT interrupt."]
-pub struct CH2_RX_END_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH2_RX_END_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 7)) | ((value as u32 & 1) << 7);
-        self.w
-    }
-}
-#[doc = "Field `CH2_ERR_INT_CLR` writer - Set this bit to clear the CH2_ERR_INT interrupt."]
-pub struct CH2_ERR_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH2_ERR_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 8)) | ((value as u32 & 1) << 8);
-        self.w
-    }
-}
-#[doc = "Field `CH3_TX_END_INT_CLR` writer - Set this bit to clear the CH3_TX_END_INT interrupt."]
-pub struct CH3_TX_END_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH3_TX_END_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 9)) | ((value as u32 & 1) << 9);
-        self.w
-    }
-}
-#[doc = "Field `CH3_RX_END_INT_CLR` writer - Set this bit to clear the CH3_RX_END_INT interrupt."]
-pub struct CH3_RX_END_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH3_RX_END_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 10)) | ((value as u32 & 1) << 10);
-        self.w
-    }
-}
-#[doc = "Field `CH3_ERR_INT_CLR` writer - Set this bit to clear the CH3_ERR_INT interrupt."]
-pub struct CH3_ERR_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH3_ERR_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 11)) | ((value as u32 & 1) << 11);
-        self.w
-    }
-}
-#[doc = "Field `CH0_TX_THR_EVENT_INT_CLR` writer - Set this bit to clear the CH0_TX_THR_EVENT_INT interrupt."]
-pub struct CH0_TX_THR_EVENT_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH0_TX_THR_EVENT_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 12)) | ((value as u32 & 1) << 12);
-        self.w
-    }
-}
-#[doc = "Field `CH1_TX_THR_EVENT_INT_CLR` writer - Set this bit to clear the CH1_TX_THR_EVENT_INT interrupt."]
-pub struct CH1_TX_THR_EVENT_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH1_TX_THR_EVENT_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 13)) | ((value as u32 & 1) << 13);
-        self.w
-    }
-}
-#[doc = "Field `CH2_TX_THR_EVENT_INT_CLR` writer - Set this bit to clear the CH2_TX_THR_EVENT_INT interrupt."]
-pub struct CH2_TX_THR_EVENT_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH2_TX_THR_EVENT_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 14)) | ((value as u32 & 1) << 14);
-        self.w
-    }
-}
-#[doc = "Field `CH3_TX_THR_EVENT_INT_CLR` writer - Set this bit to clear the CH3_TX_THR_EVENT_INT interrupt."]
-pub struct CH3_TX_THR_EVENT_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH3_TX_THR_EVENT_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 15)) | ((value as u32 & 1) << 15);
-        self.w
-    }
-}
-#[doc = "Field `CH0_TX_LOOP_INT_CLR` writer - Set this bit to clear the CH0_TX_LOOP_INT interrupt."]
-pub struct CH0_TX_LOOP_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH0_TX_LOOP_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 16)) | ((value as u32 & 1) << 16);
-        self.w
-    }
-}
-#[doc = "Field `CH1_TX_LOOP_INT_CLR` writer - Set this bit to clear the CH1_TX_LOOP_INT interrupt."]
-pub struct CH1_TX_LOOP_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH1_TX_LOOP_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 17)) | ((value as u32 & 1) << 17);
-        self.w
-    }
-}
-#[doc = "Field `CH2_TX_LOOP_INT_CLR` writer - Set this bit to clear the CH2_TX_LOOP_INT interrupt."]
-pub struct CH2_TX_LOOP_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH2_TX_LOOP_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 18)) | ((value as u32 & 1) << 18);
-        self.w
-    }
-}
-#[doc = "Field `CH3_TX_LOOP_INT_CLR` writer - Set this bit to clear the CH3_TX_LOOP_INT interrupt."]
-pub struct CH3_TX_LOOP_INT_CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CH3_TX_LOOP_INT_CLR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(1 << 19)) | ((value as u32 & 1) << 19);
+        self.w.bits = (self.w.bits & !(1 << self.offset)) | ((value as u32 & 1) << self.offset);
         self.w
     }
 }
 impl W {
+    #[doc = "Set this bit to clear the CH(0-3)_TX_END_INT interrupt."]
+    #[inline(always)]
+    pub unsafe fn ch_tx_end_int_clr(&mut self, n: usize) -> CH_TX_END_INT_CLR_W {
+        CH_TX_END_INT_CLR_W {
+            w: self,
+            offset: n * 3,
+        }
+    }
     #[doc = "Bit 0 - Set this bit to clear the CH0_TX_END_INT interrupt."]
     #[inline(always)]
-    pub fn ch0_tx_end_int_clr(&mut self) -> CH0_TX_END_INT_CLR_W {
-        CH0_TX_END_INT_CLR_W { w: self }
-    }
-    #[doc = "Bit 1 - Set this bit to clear the CH0_RX_END_INT interrupt."]
-    #[inline(always)]
-    pub fn ch0_rx_end_int_clr(&mut self) -> CH0_RX_END_INT_CLR_W {
-        CH0_RX_END_INT_CLR_W { w: self }
-    }
-    #[doc = "Bit 2 - Set this bit to clear the CH0_ERR_INT interrupt."]
-    #[inline(always)]
-    pub fn ch0_err_int_clr(&mut self) -> CH0_ERR_INT_CLR_W {
-        CH0_ERR_INT_CLR_W { w: self }
+    pub fn ch0_tx_end_int_clr(&mut self) -> CH_TX_END_INT_CLR_W {
+        CH_TX_END_INT_CLR_W { w: self, offset: 0 }
     }
     #[doc = "Bit 3 - Set this bit to clear the CH1_TX_END_INT interrupt."]
     #[inline(always)]
-    pub fn ch1_tx_end_int_clr(&mut self) -> CH1_TX_END_INT_CLR_W {
-        CH1_TX_END_INT_CLR_W { w: self }
-    }
-    #[doc = "Bit 4 - Set this bit to clear the CH1_RX_END_INT interrupt."]
-    #[inline(always)]
-    pub fn ch1_rx_end_int_clr(&mut self) -> CH1_RX_END_INT_CLR_W {
-        CH1_RX_END_INT_CLR_W { w: self }
-    }
-    #[doc = "Bit 5 - Set this bit to clear the CH1_ERR_INT interrupt."]
-    #[inline(always)]
-    pub fn ch1_err_int_clr(&mut self) -> CH1_ERR_INT_CLR_W {
-        CH1_ERR_INT_CLR_W { w: self }
+    pub fn ch1_tx_end_int_clr(&mut self) -> CH_TX_END_INT_CLR_W {
+        CH_TX_END_INT_CLR_W { w: self, offset: 3 }
     }
     #[doc = "Bit 6 - Set this bit to clear the CH2_TX_END_INT interrupt."]
     #[inline(always)]
-    pub fn ch2_tx_end_int_clr(&mut self) -> CH2_TX_END_INT_CLR_W {
-        CH2_TX_END_INT_CLR_W { w: self }
-    }
-    #[doc = "Bit 7 - Set this bit to clear the CH2_RX_END_INT interrupt."]
-    #[inline(always)]
-    pub fn ch2_rx_end_int_clr(&mut self) -> CH2_RX_END_INT_CLR_W {
-        CH2_RX_END_INT_CLR_W { w: self }
-    }
-    #[doc = "Bit 8 - Set this bit to clear the CH2_ERR_INT interrupt."]
-    #[inline(always)]
-    pub fn ch2_err_int_clr(&mut self) -> CH2_ERR_INT_CLR_W {
-        CH2_ERR_INT_CLR_W { w: self }
+    pub fn ch2_tx_end_int_clr(&mut self) -> CH_TX_END_INT_CLR_W {
+        CH_TX_END_INT_CLR_W { w: self, offset: 6 }
     }
     #[doc = "Bit 9 - Set this bit to clear the CH3_TX_END_INT interrupt."]
     #[inline(always)]
-    pub fn ch3_tx_end_int_clr(&mut self) -> CH3_TX_END_INT_CLR_W {
-        CH3_TX_END_INT_CLR_W { w: self }
+    pub fn ch3_tx_end_int_clr(&mut self) -> CH_TX_END_INT_CLR_W {
+        CH_TX_END_INT_CLR_W { w: self, offset: 9 }
+    }
+    #[doc = "Set this bit to clear the CH(0-3)_RX_END_INT interrupt."]
+    #[inline(always)]
+    pub unsafe fn ch_rx_end_int_clr(&mut self, n: usize) -> CH_RX_END_INT_CLR_W {
+        CH_RX_END_INT_CLR_W {
+            w: self,
+            offset: n * 3 + 1,
+        }
+    }
+    #[doc = "Bit 1 - Set this bit to clear the CH0_RX_END_INT interrupt."]
+    #[inline(always)]
+    pub fn ch0_rx_end_int_clr(&mut self) -> CH_RX_END_INT_CLR_W {
+        CH_RX_END_INT_CLR_W { w: self, offset: 1 }
+    }
+    #[doc = "Bit 4 - Set this bit to clear the CH1_RX_END_INT interrupt."]
+    #[inline(always)]
+    pub fn ch1_rx_end_int_clr(&mut self) -> CH_RX_END_INT_CLR_W {
+        CH_RX_END_INT_CLR_W { w: self, offset: 4 }
+    }
+    #[doc = "Bit 7 - Set this bit to clear the CH2_RX_END_INT interrupt."]
+    #[inline(always)]
+    pub fn ch2_rx_end_int_clr(&mut self) -> CH_RX_END_INT_CLR_W {
+        CH_RX_END_INT_CLR_W { w: self, offset: 7 }
     }
     #[doc = "Bit 10 - Set this bit to clear the CH3_RX_END_INT interrupt."]
     #[inline(always)]
-    pub fn ch3_rx_end_int_clr(&mut self) -> CH3_RX_END_INT_CLR_W {
-        CH3_RX_END_INT_CLR_W { w: self }
+    pub fn ch3_rx_end_int_clr(&mut self) -> CH_RX_END_INT_CLR_W {
+        CH_RX_END_INT_CLR_W {
+            w: self,
+            offset: 10,
+        }
+    }
+    #[doc = "Set this bit to clear the CH(0-3)_ERR_INT interrupt."]
+    #[inline(always)]
+    pub unsafe fn ch_err_int_clr(&mut self, n: usize) -> CH_ERR_INT_CLR_W {
+        CH_ERR_INT_CLR_W {
+            w: self,
+            offset: n * 3 + 2,
+        }
+    }
+    #[doc = "Bit 2 - Set this bit to clear the CH0_ERR_INT interrupt."]
+    #[inline(always)]
+    pub fn ch0_err_int_clr(&mut self) -> CH_ERR_INT_CLR_W {
+        CH_ERR_INT_CLR_W { w: self, offset: 2 }
+    }
+    #[doc = "Bit 5 - Set this bit to clear the CH1_ERR_INT interrupt."]
+    #[inline(always)]
+    pub fn ch1_err_int_clr(&mut self) -> CH_ERR_INT_CLR_W {
+        CH_ERR_INT_CLR_W { w: self, offset: 5 }
+    }
+    #[doc = "Bit 8 - Set this bit to clear the CH2_ERR_INT interrupt."]
+    #[inline(always)]
+    pub fn ch2_err_int_clr(&mut self) -> CH_ERR_INT_CLR_W {
+        CH_ERR_INT_CLR_W { w: self, offset: 8 }
     }
     #[doc = "Bit 11 - Set this bit to clear the CH3_ERR_INT interrupt."]
     #[inline(always)]
-    pub fn ch3_err_int_clr(&mut self) -> CH3_ERR_INT_CLR_W {
-        CH3_ERR_INT_CLR_W { w: self }
+    pub fn ch3_err_int_clr(&mut self) -> CH_ERR_INT_CLR_W {
+        CH_ERR_INT_CLR_W {
+            w: self,
+            offset: 11,
+        }
+    }
+    #[doc = "Set this bit to clear the CH(0-3)_TX_THR_EVENT_INT interrupt."]
+    #[inline(always)]
+    pub unsafe fn ch_tx_thr_event_int_clr(&mut self, n: usize) -> CH_TX_THR_EVENT_INT_CLR_W {
+        CH_TX_THR_EVENT_INT_CLR_W {
+            w: self,
+            offset: n + 12,
+        }
     }
     #[doc = "Bit 12 - Set this bit to clear the CH0_TX_THR_EVENT_INT interrupt."]
     #[inline(always)]
-    pub fn ch0_tx_thr_event_int_clr(&mut self) -> CH0_TX_THR_EVENT_INT_CLR_W {
-        CH0_TX_THR_EVENT_INT_CLR_W { w: self }
+    pub fn ch0_tx_thr_event_int_clr(&mut self) -> CH_TX_THR_EVENT_INT_CLR_W {
+        CH_TX_THR_EVENT_INT_CLR_W {
+            w: self,
+            offset: 12,
+        }
     }
     #[doc = "Bit 13 - Set this bit to clear the CH1_TX_THR_EVENT_INT interrupt."]
     #[inline(always)]
-    pub fn ch1_tx_thr_event_int_clr(&mut self) -> CH1_TX_THR_EVENT_INT_CLR_W {
-        CH1_TX_THR_EVENT_INT_CLR_W { w: self }
+    pub fn ch1_tx_thr_event_int_clr(&mut self) -> CH_TX_THR_EVENT_INT_CLR_W {
+        CH_TX_THR_EVENT_INT_CLR_W {
+            w: self,
+            offset: 13,
+        }
     }
     #[doc = "Bit 14 - Set this bit to clear the CH2_TX_THR_EVENT_INT interrupt."]
     #[inline(always)]
-    pub fn ch2_tx_thr_event_int_clr(&mut self) -> CH2_TX_THR_EVENT_INT_CLR_W {
-        CH2_TX_THR_EVENT_INT_CLR_W { w: self }
+    pub fn ch2_tx_thr_event_int_clr(&mut self) -> CH_TX_THR_EVENT_INT_CLR_W {
+        CH_TX_THR_EVENT_INT_CLR_W {
+            w: self,
+            offset: 14,
+        }
     }
     #[doc = "Bit 15 - Set this bit to clear the CH3_TX_THR_EVENT_INT interrupt."]
     #[inline(always)]
-    pub fn ch3_tx_thr_event_int_clr(&mut self) -> CH3_TX_THR_EVENT_INT_CLR_W {
-        CH3_TX_THR_EVENT_INT_CLR_W { w: self }
+    pub fn ch3_tx_thr_event_int_clr(&mut self) -> CH_TX_THR_EVENT_INT_CLR_W {
+        CH_TX_THR_EVENT_INT_CLR_W {
+            w: self,
+            offset: 15,
+        }
+    }
+    #[doc = "Set this bit to clear the CH(0-3)_TX_LOOP_INT interrupt."]
+    #[inline(always)]
+    pub unsafe fn ch_tx_loop_int_clr(&mut self, n: usize) -> CH_TX_LOOP_INT_CLR_W {
+        CH_TX_LOOP_INT_CLR_W {
+            w: self,
+            offset: n + 16,
+        }
     }
     #[doc = "Bit 16 - Set this bit to clear the CH0_TX_LOOP_INT interrupt."]
     #[inline(always)]
-    pub fn ch0_tx_loop_int_clr(&mut self) -> CH0_TX_LOOP_INT_CLR_W {
-        CH0_TX_LOOP_INT_CLR_W { w: self }
+    pub fn ch0_tx_loop_int_clr(&mut self) -> CH_TX_LOOP_INT_CLR_W {
+        CH_TX_LOOP_INT_CLR_W {
+            w: self,
+            offset: 16,
+        }
     }
     #[doc = "Bit 17 - Set this bit to clear the CH1_TX_LOOP_INT interrupt."]
     #[inline(always)]
-    pub fn ch1_tx_loop_int_clr(&mut self) -> CH1_TX_LOOP_INT_CLR_W {
-        CH1_TX_LOOP_INT_CLR_W { w: self }
+    pub fn ch1_tx_loop_int_clr(&mut self) -> CH_TX_LOOP_INT_CLR_W {
+        CH_TX_LOOP_INT_CLR_W {
+            w: self,
+            offset: 17,
+        }
     }
     #[doc = "Bit 18 - Set this bit to clear the CH2_TX_LOOP_INT interrupt."]
     #[inline(always)]
-    pub fn ch2_tx_loop_int_clr(&mut self) -> CH2_TX_LOOP_INT_CLR_W {
-        CH2_TX_LOOP_INT_CLR_W { w: self }
+    pub fn ch2_tx_loop_int_clr(&mut self) -> CH_TX_LOOP_INT_CLR_W {
+        CH_TX_LOOP_INT_CLR_W {
+            w: self,
+            offset: 18,
+        }
     }
     #[doc = "Bit 19 - Set this bit to clear the CH3_TX_LOOP_INT interrupt."]
     #[inline(always)]
-    pub fn ch3_tx_loop_int_clr(&mut self) -> CH3_TX_LOOP_INT_CLR_W {
-        CH3_TX_LOOP_INT_CLR_W { w: self }
+    pub fn ch3_tx_loop_int_clr(&mut self) -> CH_TX_LOOP_INT_CLR_W {
+        CH_TX_LOOP_INT_CLR_W {
+            w: self,
+            offset: 19,
+        }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]

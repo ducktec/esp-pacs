@@ -34,26 +34,26 @@ impl From<crate::W<CHCARRIER_DUTY_SPEC>> for W {
         W(writer)
     }
 }
-#[doc = "Field `CARRIER_LOW_CH0` reader - This register is used to configure carrier wave 's low level clock period for CHANNEL%s."]
-pub struct CARRIER_LOW_CH0_R(crate::FieldReader<u16, u16>);
-impl CARRIER_LOW_CH0_R {
+#[doc = "Field `CARRIER_LOW` reader - This register is used to configure carrier wave 's low level clock period for CHANNEL%s."]
+pub struct CARRIER_LOW_R(crate::FieldReader<u16, u16>);
+impl CARRIER_LOW_R {
     #[inline(always)]
     pub(crate) fn new(bits: u16) -> Self {
-        CARRIER_LOW_CH0_R(crate::FieldReader::new(bits))
+        CARRIER_LOW_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for CARRIER_LOW_CH0_R {
+impl core::ops::Deref for CARRIER_LOW_R {
     type Target = crate::FieldReader<u16, u16>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
-#[doc = "Field `CARRIER_LOW_CH0` writer - This register is used to configure carrier wave 's low level clock period for CHANNEL%s."]
-pub struct CARRIER_LOW_CH0_W<'a> {
+#[doc = "Field `CARRIER_LOW` writer - This register is used to configure carrier wave 's low level clock period for CHANNEL%s."]
+pub struct CARRIER_LOW_W<'a> {
     w: &'a mut W,
 }
-impl<'a> CARRIER_LOW_CH0_W<'a> {
+impl<'a> CARRIER_LOW_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub unsafe fn bits(self, value: u16) -> &'a mut W {
@@ -61,26 +61,26 @@ impl<'a> CARRIER_LOW_CH0_W<'a> {
         self.w
     }
 }
-#[doc = "Field `CARRIER_HIGH_CH0` reader - This register is used to configure carrier wave 's high level clock period for CHANNEL%s."]
-pub struct CARRIER_HIGH_CH0_R(crate::FieldReader<u16, u16>);
-impl CARRIER_HIGH_CH0_R {
+#[doc = "Field `CARRIER_HIGH` reader - This register is used to configure carrier wave 's high level clock period for CHANNEL%s."]
+pub struct CARRIER_HIGH_R(crate::FieldReader<u16, u16>);
+impl CARRIER_HIGH_R {
     #[inline(always)]
     pub(crate) fn new(bits: u16) -> Self {
-        CARRIER_HIGH_CH0_R(crate::FieldReader::new(bits))
+        CARRIER_HIGH_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for CARRIER_HIGH_CH0_R {
+impl core::ops::Deref for CARRIER_HIGH_R {
     type Target = crate::FieldReader<u16, u16>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
-#[doc = "Field `CARRIER_HIGH_CH0` writer - This register is used to configure carrier wave 's high level clock period for CHANNEL%s."]
-pub struct CARRIER_HIGH_CH0_W<'a> {
+#[doc = "Field `CARRIER_HIGH` writer - This register is used to configure carrier wave 's high level clock period for CHANNEL%s."]
+pub struct CARRIER_HIGH_W<'a> {
     w: &'a mut W,
 }
-impl<'a> CARRIER_HIGH_CH0_W<'a> {
+impl<'a> CARRIER_HIGH_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub unsafe fn bits(self, value: u16) -> &'a mut W {
@@ -91,25 +91,25 @@ impl<'a> CARRIER_HIGH_CH0_W<'a> {
 impl R {
     #[doc = "Bits 0:15 - This register is used to configure carrier wave 's low level clock period for CHANNEL%s."]
     #[inline(always)]
-    pub fn carrier_low_ch0(&self) -> CARRIER_LOW_CH0_R {
-        CARRIER_LOW_CH0_R::new((self.bits & 0xffff) as u16)
+    pub fn carrier_low(&self) -> CARRIER_LOW_R {
+        CARRIER_LOW_R::new((self.bits & 0xffff) as u16)
     }
     #[doc = "Bits 16:31 - This register is used to configure carrier wave 's high level clock period for CHANNEL%s."]
     #[inline(always)]
-    pub fn carrier_high_ch0(&self) -> CARRIER_HIGH_CH0_R {
-        CARRIER_HIGH_CH0_R::new(((self.bits >> 16) & 0xffff) as u16)
+    pub fn carrier_high(&self) -> CARRIER_HIGH_R {
+        CARRIER_HIGH_R::new(((self.bits >> 16) & 0xffff) as u16)
     }
 }
 impl W {
     #[doc = "Bits 0:15 - This register is used to configure carrier wave 's low level clock period for CHANNEL%s."]
     #[inline(always)]
-    pub fn carrier_low_ch0(&mut self) -> CARRIER_LOW_CH0_W {
-        CARRIER_LOW_CH0_W { w: self }
+    pub fn carrier_low(&mut self) -> CARRIER_LOW_W {
+        CARRIER_LOW_W { w: self }
     }
     #[doc = "Bits 16:31 - This register is used to configure carrier wave 's high level clock period for CHANNEL%s."]
     #[inline(always)]
-    pub fn carrier_high_ch0(&mut self) -> CARRIER_HIGH_CH0_W {
-        CARRIER_HIGH_CH0_W { w: self }
+    pub fn carrier_high(&mut self) -> CARRIER_HIGH_W {
+        CARRIER_HIGH_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]

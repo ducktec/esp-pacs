@@ -1,1 +1,45 @@
 _svd: ../esp32s2.base.svd
+
+RMT:
+  "*":
+    _strip:
+      - RMT_
+  "*CH%s*":
+    _strip_end:
+      - "_CH0"
+      - "_CH1"
+      - "_CH2"
+      - "_CH3"
+      - "_CH"
+  "CH%sDATA":
+    _modify:
+      "*DATA":
+        access: read-write
+  INT_RAW:
+    _array:
+      "CH?_TX_END_INT_RAW": {}
+      "CH?_RX_END_INT_RAW": {}
+      "CH?_ERR_INT_RAW": {}
+      "CH?_TX_THR_EVENT_INT_RAW": {}
+      "CH?_TX_LOOP_INT_RAW": {}
+  INT_ST:
+    _array:
+      "CH?_TX_END_INT_ST": {}
+      "CH?_RX_END_INT_ST": {}
+      "CH?_ERR_INT_ST": {}
+      "CH?_TX_THR_EVENT_INT_ST": {}
+      "CH?_TX_LOOP_INT_ST": {}
+  INT_ENA:
+    _array:
+      "CH?_TX_END_INT_ENA": {}
+      "CH?_RX_END_INT_ENA": {}
+      "CH?_ERR_INT_ENA": {}
+      "CH?_TX_THR_EVENT_INT_ENA": {}
+      "CH?_TX_LOOP_INT_ENA": {}
+  INT_CLR:
+    _array:
+      "CH?_TX_END_INT_CLR": {}
+      "CH?_RX_END_INT_CLR": {}
+      "CH?_ERR_INT_CLR": {}
+      "CH?_TX_THR_EVENT_INT_CLR": {}
+      "CH?_TX_LOOP_INT_CLR": {}

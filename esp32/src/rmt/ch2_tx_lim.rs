@@ -34,26 +34,26 @@ impl From<crate::W<CH2_TX_LIM_SPEC>> for W {
         W(writer)
     }
 }
-#[doc = "Field `TX_LIM_CH2` reader - When channel2 sends more than reg_rmt_tx_lim_ch2 datas then channel2 produce the relative interrupt."]
-pub struct TX_LIM_CH2_R(crate::FieldReader<u16, u16>);
-impl TX_LIM_CH2_R {
+#[doc = "Field `TX_LIM` reader - When channel2 sends more than reg_rmt_tx_lim_ch2 datas then channel2 produce the relative interrupt."]
+pub struct TX_LIM_R(crate::FieldReader<u16, u16>);
+impl TX_LIM_R {
     #[inline(always)]
     pub(crate) fn new(bits: u16) -> Self {
-        TX_LIM_CH2_R(crate::FieldReader::new(bits))
+        TX_LIM_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for TX_LIM_CH2_R {
+impl core::ops::Deref for TX_LIM_R {
     type Target = crate::FieldReader<u16, u16>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
-#[doc = "Field `TX_LIM_CH2` writer - When channel2 sends more than reg_rmt_tx_lim_ch2 datas then channel2 produce the relative interrupt."]
-pub struct TX_LIM_CH2_W<'a> {
+#[doc = "Field `TX_LIM` writer - When channel2 sends more than reg_rmt_tx_lim_ch2 datas then channel2 produce the relative interrupt."]
+pub struct TX_LIM_W<'a> {
     w: &'a mut W,
 }
-impl<'a> TX_LIM_CH2_W<'a> {
+impl<'a> TX_LIM_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub unsafe fn bits(self, value: u16) -> &'a mut W {
@@ -64,15 +64,15 @@ impl<'a> TX_LIM_CH2_W<'a> {
 impl R {
     #[doc = "Bits 0:8 - When channel2 sends more than reg_rmt_tx_lim_ch2 datas then channel2 produce the relative interrupt."]
     #[inline(always)]
-    pub fn tx_lim_ch2(&self) -> TX_LIM_CH2_R {
-        TX_LIM_CH2_R::new((self.bits & 0x01ff) as u16)
+    pub fn tx_lim(&self) -> TX_LIM_R {
+        TX_LIM_R::new((self.bits & 0x01ff) as u16)
     }
 }
 impl W {
     #[doc = "Bits 0:8 - When channel2 sends more than reg_rmt_tx_lim_ch2 datas then channel2 produce the relative interrupt."]
     #[inline(always)]
-    pub fn tx_lim_ch2(&mut self) -> TX_LIM_CH2_W {
-        TX_LIM_CH2_W { w: self }
+    pub fn tx_lim(&mut self) -> TX_LIM_W {
+        TX_LIM_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]

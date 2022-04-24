@@ -34,26 +34,26 @@ impl From<crate::W<DATE_SPEC>> for W {
         W(writer)
     }
 }
-#[doc = "Field `RMT_DATE` reader - reg_rmt_date."]
-pub struct RMT_DATE_R(crate::FieldReader<u32, u32>);
-impl RMT_DATE_R {
+#[doc = "Field `DATE` reader - reg_rmt_date."]
+pub struct DATE_R(crate::FieldReader<u32, u32>);
+impl DATE_R {
     #[inline(always)]
     pub(crate) fn new(bits: u32) -> Self {
-        RMT_DATE_R(crate::FieldReader::new(bits))
+        DATE_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for RMT_DATE_R {
+impl core::ops::Deref for DATE_R {
     type Target = crate::FieldReader<u32, u32>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
-#[doc = "Field `RMT_DATE` writer - reg_rmt_date."]
-pub struct RMT_DATE_W<'a> {
+#[doc = "Field `DATE` writer - reg_rmt_date."]
+pub struct DATE_W<'a> {
     w: &'a mut W,
 }
-impl<'a> RMT_DATE_W<'a> {
+impl<'a> DATE_W<'a> {
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub unsafe fn bits(self, value: u32) -> &'a mut W {
@@ -64,15 +64,15 @@ impl<'a> RMT_DATE_W<'a> {
 impl R {
     #[doc = "Bits 0:27 - reg_rmt_date."]
     #[inline(always)]
-    pub fn rmt_date(&self) -> RMT_DATE_R {
-        RMT_DATE_R::new((self.bits & 0x0fff_ffff) as u32)
+    pub fn date(&self) -> DATE_R {
+        DATE_R::new((self.bits & 0x0fff_ffff) as u32)
     }
 }
 impl W {
     #[doc = "Bits 0:27 - reg_rmt_date."]
     #[inline(always)]
-    pub fn rmt_date(&mut self) -> RMT_DATE_W {
-        RMT_DATE_W { w: self }
+    pub fn date(&mut self) -> DATE_W {
+        DATE_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
