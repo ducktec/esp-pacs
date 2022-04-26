@@ -10,7 +10,27 @@ RMT:
       - "_CH1"
       - "_CH2"
       - "_CH3"
+      - "_CH4"
+      - "_CH5"
+      - "_CH6"
+      - "_CH7"
       - "_CH"
+  "CH[1234567]CONF0":
+    _add:
+      MEM_PD:
+        description: This bit is used to reduce power consumed by mem. 1:mem is in low power state.
+        bitOffset: 30
+        bitWidth: 1
+        access: read-write
+      CLK_EN:
+        description: This bit is used to control clock.when software config RMT internal registers it controls the register clock.
+        bitOffset: 31
+        bitWidth: 1
+        access: read-write
+  _array:
+    "CH?_TX_LIM": {}
+    "CH?CONF0": {}
+    "CH?CONF1": {}
   INT_RAW:
     _array:
       "CH?_TX_END_INT_RAW": {}

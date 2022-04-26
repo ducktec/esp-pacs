@@ -13,15 +13,15 @@ impl From<crate::R<CH6ADDR_SPEC>> for R {
         R(reader)
     }
 }
-#[doc = "Field `APB_MEM_ADDR_CH6` reader - The ram relative address in channel6 by apb fifo access"]
-pub struct APB_MEM_ADDR_CH6_R(crate::FieldReader<u32, u32>);
-impl APB_MEM_ADDR_CH6_R {
+#[doc = "Field `APB_MEM_ADDR` reader - The ram relative address in channel6 by apb fifo access"]
+pub struct APB_MEM_ADDR_R(crate::FieldReader<u32, u32>);
+impl APB_MEM_ADDR_R {
     #[inline(always)]
     pub(crate) fn new(bits: u32) -> Self {
-        APB_MEM_ADDR_CH6_R(crate::FieldReader::new(bits))
+        APB_MEM_ADDR_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for APB_MEM_ADDR_CH6_R {
+impl core::ops::Deref for APB_MEM_ADDR_R {
     type Target = crate::FieldReader<u32, u32>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
@@ -31,8 +31,8 @@ impl core::ops::Deref for APB_MEM_ADDR_CH6_R {
 impl R {
     #[doc = "Bits 0:31 - The ram relative address in channel6 by apb fifo access"]
     #[inline(always)]
-    pub fn apb_mem_addr_ch6(&self) -> APB_MEM_ADDR_CH6_R {
-        APB_MEM_ADDR_CH6_R::new(self.bits)
+    pub fn apb_mem_addr(&self) -> APB_MEM_ADDR_R {
+        APB_MEM_ADDR_R::new(self.bits)
     }
 }
 #[doc = "\n\nThis register you can [`read`]
