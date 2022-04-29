@@ -4,7 +4,7 @@
   <vendorID>ESPRESSIF</vendorID>
   <name>ESP32-S3</name>
   <series>ESP32-S3</series>
-  <version>6</version>
+  <version>7</version>
   <description>32-bit MCU &amp; 2.4 GHz Wi-Fi &amp; Bluetooth 5 (LE)</description>
   <licenseText>
     Copyright 2022 Espressif Systems (Shanghai) PTE LTD
@@ -26435,6 +26435,1590 @@ Any pulses with width less than this will be ignored when the filter is enabled.
         <name>PWM1</name>
         <value>32</value>
       </interrupt>
+    </peripheral>
+    <peripheral>
+      <name>RMT</name>
+      <description>Remote control</description>
+      <groupName>RMT</groupName>
+      <baseAddress>0x60016000</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0xd0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <interrupt>
+        <name>RMT</name>
+        <value>40</value>
+      </interrupt>
+      <registers>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>TX_CH%sDATA</name>
+          <description>The read and write  data register for CHANNEL%s by apb fifo access.</description>
+          <addressOffset>0x0</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>CHDATA</name>
+              <description>Read and write data for channel %s via APB FIFO.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>RX_CH%sDATA</name>
+          <description>The read and write  data register for CHANNEL$n by apb fifo access.</description>
+          <addressOffset>0x10</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>CHDATA</name>
+              <description>Read and write data for channel 0 via APB FIFO.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>TX_CH%sCONF0</name>
+          <description>Channel %s configure register 0</description>
+          <addressOffset>0x20</addressOffset>
+          <size>32</size>
+          <resetValue>0x710200</resetValue>
+          <fields>
+            <field>
+              <name>TX_START_CH0</name>
+              <description>Set this bit to start sending data on CHANNEL%s.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>MEM_RD_RST_CH0</name>
+              <description>Set this bit to reset read ram address for CHANNEL%s by accessing transmitter.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>APB_MEM_RST_CH0</name>
+              <description>Set this bit to reset W/R ram address for CHANNEL%s by accessing apb fifo.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>TX_CONTI_MODE_CH0</name>
+              <description>Set this bit to restart transmission  from the first data to the last data in CHANNEL%s.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>MEM_TX_WRAP_EN_CH0</name>
+              <description>This is the channel %s enable bit for wraparound mode: it will resume sending at the start when the data to be sent is more than its memory size.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>IDLE_OUT_LV_CH0</name>
+              <description>This bit configures the level of output signal in CHANNEL%s when the latter is in IDLE state.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>IDLE_OUT_EN_CH0</name>
+              <description>This is the output enable-control bit for CHANNEL%s in IDLE state.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>TX_STOP_CH0</name>
+              <description>Set this bit to stop the transmitter of CHANNEL%s sending data out.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>DIV_CNT_CH0</name>
+              <description>This register is used to configure the divider for clock of CHANNEL%s.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>MEM_SIZE_CH0</name>
+              <description>This register is used to configure the maximum size of memory allocated to CHANNEL%s.</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>4</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CARRIER_EFF_EN_CH0</name>
+              <description>1: Add carrier modulation on the output signal only at the send data state for CHANNEL%s. 0: Add carrier modulation on the output signal at all state for CHANNEL%s. Only valid when RMT_CARRIER_EN_CH%s is 1.</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CARRIER_EN_CH0</name>
+              <description>This is the carrier modulation enable-control bit for CHANNEL%s. 1: Add carrier modulation in the output signal. 0: No carrier modulation in sig_out.</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CARRIER_OUT_LV_CH0</name>
+              <description>This bit is used to configure the position of carrier wave for CHANNEL%s.
+
+1'h0: add carrier wave on low level.
+
+1'h1: add carrier wave on high level.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>AFIFO_RST_CH0</name>
+              <description>Reserved</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CONF_UPDATE_CH0</name>
+              <description>synchronization bit for CHANNEL%s</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x8</dimIncrement>
+          <name>RX_CH%sCONF0</name>
+          <description>Channel %s configure register 0</description>
+          <addressOffset>0x30</addressOffset>
+          <size>32</size>
+          <resetValue>0x317fff02</resetValue>
+          <fields>
+            <field>
+              <name>DIV_CNT_CH4</name>
+              <description>This register is used to configure the divider for clock of CHANNEL%s.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>IDLE_THRES_CH4</name>
+              <description>When no edge is detected on the input signal and continuous clock cycles is longer than this register value, received process is finished.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>15</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>MEM_SIZE_CH4</name>
+              <description>This register is used to configure the maximum size of memory allocated to CHANNEL%s.</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CARRIER_EN_CH4</name>
+              <description>This is the carrier modulation enable-control bit for CHANNEL%s. 1: Add carrier modulation in the output signal. 0: No carrier modulation in sig_out.</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CARRIER_OUT_LV_CH4</name>
+              <description>This bit is used to configure the position of carrier wave for CHANNEL%s.
+
+1'h0: add carrier wave on low level.
+
+1'h1: add carrier wave on high level.</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x8</dimIncrement>
+          <name>RX_CH%sCONF1</name>
+          <description>Channel %s configure register 1</description>
+          <addressOffset>0x34</addressOffset>
+          <size>32</size>
+          <resetValue>0x1e8</resetValue>
+          <fields>
+            <field>
+              <name>RX_EN_CH4</name>
+              <description>Set this bit to enable receiver to receive data on CHANNEL%s.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>MEM_WR_RST_CH4</name>
+              <description>Set this bit to reset write ram address for CHANNEL%s by accessing receiver.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>APB_MEM_RST_CH4</name>
+              <description>Set this bit to reset W/R ram address for CHANNEL%s by accessing apb fifo.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>MEM_OWNER_CH4</name>
+              <description>This register marks the ownership of CHANNEL%s's ram block.
+
+1'h1: Receiver is using the ram. 
+
+1'h0: APB bus is using the ram.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RX_FILTER_EN_CH4</name>
+              <description>This is the receive filter's enable bit for CHANNEL%s.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RX_FILTER_THRES_CH4</name>
+              <description>Ignores the input pulse when its width is smaller than this register value in APB clock periods (in receive mode).</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>8</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>MEM_RX_WRAP_EN_CH4</name>
+              <description>This is the channel %s enable bit for wraparound mode: it will resume receiving at the start when the data to be received is more than its memory size.</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>AFIFO_RST_CH4</name>
+              <description>Reserved</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CONF_UPDATE_CH4</name>
+              <description>synchronization bit for CHANNEL%s</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>TX_CH%sSTATUS</name>
+          <description>Channel %s status register</description>
+          <addressOffset>0x50</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>MEM_RADDR_EX_CH0</name>
+              <description>This register records the memory address offset when transmitter of CHANNEL%s is using the RAM.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>10</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>APB_MEM_WADDR_CH0</name>
+              <description>This register records the memory address offset when writes RAM over APB bus.</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>10</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>STATE_CH0</name>
+              <description>This register records the FSM status of CHANNEL%s.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>3</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>MEM_EMPTY_CH0</name>
+              <description>This status bit will be set when the data to be set is more than memory size and the wraparound mode is disabled.</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>APB_MEM_WR_ERR_CH0</name>
+              <description>This status bit will be set if the offset address out of memory size when writes via APB bus.</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>RX_CH%sSTATUS</name>
+          <description>Channel %s status register</description>
+          <addressOffset>0x60</addressOffset>
+          <size>32</size>
+          <resetValue>0x600c0</resetValue>
+          <fields>
+            <field>
+              <name>MEM_WADDR_EX_CH4</name>
+              <description>This register records the memory address offset when receiver of CHANNEL%s is using the RAM.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>10</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>APB_MEM_RADDR_CH4</name>
+              <description>This register records the memory address offset when reads RAM over APB bus.</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>10</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>STATE_CH4</name>
+              <description>This register records the FSM status of CHANNEL%s.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>3</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>MEM_OWNER_ERR_CH4</name>
+              <description>This status bit will be set when the ownership of memory block is wrong.</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>MEM_FULL_CH4</name>
+              <description>This status bit will be set if the receiver receives more data than the memory size.</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>APB_MEM_RD_ERR_CH4</name>
+              <description>This status bit will be set if the offset address out of memory size when reads via APB bus.</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>INT_RAW</name>
+          <description>Raw interrupt status</description>
+          <addressOffset>0x70</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>CH0_TX_END_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL0. Triggered when transmission done.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_TX_END_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL1. Triggered when transmission done.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_TX_END_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL2. Triggered when transmission done.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_TX_END_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL3. Triggered when transmission done.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH0_ERR_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL0. Triggered when error occurs.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH1_ERR_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL1. Triggered when error occurs.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH2_ERR_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL2. Triggered when error occurs.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH3_ERR_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL3. Triggered when error occurs.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH0_TX_THR_EVENT_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL0. Triggered when transmitter sent more data than configured value.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_TX_THR_EVENT_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL1. Triggered when transmitter sent more data than configured value.</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_TX_THR_EVENT_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL2. Triggered when transmitter sent more data than configured value.</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_TX_THR_EVENT_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL3. Triggered when transmitter sent more data than configured value.</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH0_TX_LOOP_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL0. Triggered when the loop count reaches the configured threshold value.</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_TX_LOOP_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL1. Triggered when the loop count reaches the configured threshold value.</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_TX_LOOP_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL2. Triggered when the loop count reaches the configured threshold value.</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_TX_LOOP_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL3. Triggered when the loop count reaches the configured threshold value.</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH0_RX_END_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL0. Triggered when reception done.</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_RX_END_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL1. Triggered when reception done.</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_RX_END_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL2. Triggered when reception done.</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_RX_END_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL3. Triggered when reception done.</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH0_ERR_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL0. Triggered when error occurs.</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH1_ERR_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL1. Triggered when error occurs.</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH2_ERR_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL2. Triggered when error occurs.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH3_ERR_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL3. Triggered when error occurs.</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH0_RX_THR_EVENT_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL0. Triggered when receiver receive more data than configured value.</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_RX_THR_EVENT_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL1. Triggered when receiver receive more data than configured value.</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_RX_THR_EVENT_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL2. Triggered when receiver receive more data than configured value.</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_RX_THR_EVENT_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL3. Triggered when receiver receive more data than configured value.</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH0_DMA_ACCESS_FAIL_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL0. Triggered when dma accessing CHANNEL0 fails.</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH0_DMA_ACCESS_FAIL_INT_RAW</name>
+              <description>The interrupt raw bit for CHANNEL0. Triggered when dma accessing CHANNEL0 fails.</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>INT_ST</name>
+          <description>Masked interrupt status</description>
+          <addressOffset>0x74</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>CH0_TX_END_INT_ST</name>
+              <description>The masked interrupt status bit for CH0_TX_END_INT.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_TX_END_INT_ST</name>
+              <description>The masked interrupt status bit for CH1_TX_END_INT.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_TX_END_INT_ST</name>
+              <description>The masked interrupt status bit for CH2_TX_END_INT.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_TX_END_INT_ST</name>
+              <description>The masked interrupt status bit for CH3_TX_END_INT.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH0_ERR_INT_ST</name>
+              <description>The masked interrupt status bit for CH0_ERR_INT.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH1_ERR_INT_ST</name>
+              <description>The masked interrupt status bit for CH1_ERR_INT.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH2_ERR_INT_ST</name>
+              <description>The masked interrupt status bit for CH2_ERR_INT.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH3_ERR_INT_ST</name>
+              <description>The masked interrupt status bit for CH3_ERR_INT.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH0_TX_THR_EVENT_INT_ST</name>
+              <description>The masked interrupt status bit for CH0_TX_THR_EVENT_INT.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_TX_THR_EVENT_INT_ST</name>
+              <description>The masked interrupt status bit for CH1_TX_THR_EVENT_INT.</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_TX_THR_EVENT_INT_ST</name>
+              <description>The masked interrupt status bit for CH2_TX_THR_EVENT_INT.</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_TX_THR_EVENT_INT_ST</name>
+              <description>The masked interrupt status bit for CH3_TX_THR_EVENT_INT.</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH0_TX_LOOP_INT_ST</name>
+              <description>The masked interrupt status bit for CH0_TX_LOOP_INT.</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_TX_LOOP_INT_ST</name>
+              <description>The masked interrupt status bit for CH1_TX_LOOP_INT.</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_TX_LOOP_INT_ST</name>
+              <description>The masked interrupt status bit for CH2_TX_LOOP_INT.</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_TX_LOOP_INT_ST</name>
+              <description>The masked interrupt status bit for CH3_TX_LOOP_INT.</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH0_RX_END_INT_ST</name>
+              <description>The masked interrupt status bit for CH0_RX_END_INT.</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_RX_END_INT_ST</name>
+              <description>The masked interrupt status bit for CH1_RX_END_INT.</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_RX_END_INT_ST</name>
+              <description>The masked interrupt status bit for CH2_RX_END_INT.</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_RX_END_INT_ST</name>
+              <description>The masked interrupt status bit for CH3_RX_END_INT.</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH0_ERR_INT_ST</name>
+              <description>The masked interrupt status bit for CH0_ERR_INT.</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH1_ERR_INT_ST</name>
+              <description>The masked interrupt status bit for CH1_ERR_INT.</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH2_ERR_INT_ST</name>
+              <description>The masked interrupt status bit for CH2_ERR_INT.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH3_ERR_INT_ST</name>
+              <description>The masked interrupt status bit for CH3_ERR_INT.</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH0_RX_THR_EVENT_INT_ST</name>
+              <description>The masked interrupt status bit for CH0_RX_THR_EVENT_INT.</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH1_RX_THR_EVENT_INT_ST</name>
+              <description>The masked interrupt status bit for CH1_RX_THR_EVENT_INT.</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH2_RX_THR_EVENT_INT_ST</name>
+              <description>The masked interrupt status bit for CH2_RX_THR_EVENT_INT.</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>CH3_RX_THR_EVENT_INT_ST</name>
+              <description>The masked interrupt status bit for CH3_RX_THR_EVENT_INT.</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TX_CH0_DMA_ACCESS_FAIL_INT_ST</name>
+              <description>The masked interrupt status bit for  CH0_DMA_ACCESS_FAIL_INT.</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>RX_CH0_DMA_ACCESS_FAIL_INT_ST</name>
+              <description>The masked interrupt status bit for  CH0_DMA_ACCESS_FAIL_INT.</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>INT_ENA</name>
+          <description>Interrupt enable bits</description>
+          <addressOffset>0x78</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>CH0_TX_END_INT_ENA</name>
+              <description>The interrupt enable bit for CH0_TX_END_INT.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH1_TX_END_INT_ENA</name>
+              <description>The interrupt enable bit for CH1_TX_END_INT.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH2_TX_END_INT_ENA</name>
+              <description>The interrupt enable bit for CH2_TX_END_INT.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH3_TX_END_INT_ENA</name>
+              <description>The interrupt enable bit for CH3_TX_END_INT.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>TX_CH0_ERR_INT_ENA</name>
+              <description>The interrupt enable bit for CH0_ERR_INT.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>TX_CH1_ERR_INT_ENA</name>
+              <description>The interrupt enable bit for CH1_ERR_INT.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>TX_CH2_ERR_INT_ENA</name>
+              <description>The interrupt enable bit for CH2_ERR_INT.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>TX_CH3_ERR_INT_ENA</name>
+              <description>The interrupt enable bit for CH3_ERR_INT.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH0_TX_THR_EVENT_INT_ENA</name>
+              <description>The interrupt enable bit for CH0_TX_THR_EVENT_INT.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH1_TX_THR_EVENT_INT_ENA</name>
+              <description>The interrupt enable bit for CH1_TX_THR_EVENT_INT.</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH2_TX_THR_EVENT_INT_ENA</name>
+              <description>The interrupt enable bit for CH2_TX_THR_EVENT_INT.</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH3_TX_THR_EVENT_INT_ENA</name>
+              <description>The interrupt enable bit for CH3_TX_THR_EVENT_INT.</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH0_TX_LOOP_INT_ENA</name>
+              <description>The interrupt enable bit for CH0_TX_LOOP_INT.</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH1_TX_LOOP_INT_ENA</name>
+              <description>The interrupt enable bit for CH1_TX_LOOP_INT.</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH2_TX_LOOP_INT_ENA</name>
+              <description>The interrupt enable bit for CH2_TX_LOOP_INT.</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH3_TX_LOOP_INT_ENA</name>
+              <description>The interrupt enable bit for CH3_TX_LOOP_INT.</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH0_RX_END_INT_ENA</name>
+              <description>The interrupt enable bit for CH0_RX_END_INT.</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH1_RX_END_INT_ENA</name>
+              <description>The interrupt enable bit for CH1_RX_END_INT.</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH2_RX_END_INT_ENA</name>
+              <description>The interrupt enable bit for CH2_RX_END_INT.</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH3_RX_END_INT_ENA</name>
+              <description>The interrupt enable bit for CH3_RX_END_INT.</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH0_ERR_INT_ENA</name>
+              <description>The interrupt enable bit for CH0_ERR_INT.</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH1_ERR_INT_ENA</name>
+              <description>The interrupt enable bit for CH1_ERR_INT.</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH2_ERR_INT_ENA</name>
+              <description>The interrupt enable bit for CH2_ERR_INT.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH3_ERR_INT_ENA</name>
+              <description>The interrupt enable bit for CH3_ERR_INT.</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH0_RX_THR_EVENT_INT_ENA</name>
+              <description>The interrupt enable bit for CH0_RX_THR_EVENT_INT.</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH1_RX_THR_EVENT_INT_ENA</name>
+              <description>The interrupt enable bit for CH1_RX_THR_EVENT_INT.</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH2_RX_THR_EVENT_INT_ENA</name>
+              <description>The interrupt enable bit for CH2_RX_THR_EVENT_INT.</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH3_RX_THR_EVENT_INT_ENA</name>
+              <description>The interrupt enable bit for CH3_RX_THR_EVENT_INT.</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>TX_CH0_DMA_ACCESS_FAIL_INT_ENA</name>
+              <description>The interrupt enable bit for CH0_DMA_ACCESS_FAIL_INT.</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RX_CH0_DMA_ACCESS_FAIL_INT_ENA</name>
+              <description>The interrupt enable bit for CH0_DMA_ACCESS_FAIL_INT.</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>INT_CLR</name>
+          <description>Interrupt clear bits</description>
+          <addressOffset>0x7c</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>CH0_TX_END_INT_CLR</name>
+              <description>Set this bit to clear theCH0_TX_END_INT interrupt.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH1_TX_END_INT_CLR</name>
+              <description>Set this bit to clear theCH1_TX_END_INT interrupt.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH2_TX_END_INT_CLR</name>
+              <description>Set this bit to clear theCH2_TX_END_INT interrupt.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH3_TX_END_INT_CLR</name>
+              <description>Set this bit to clear theCH3_TX_END_INT interrupt.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>TX_CH0_ERR_INT_CLR</name>
+              <description>Set this bit to clear theCH0_ERR_INT interrupt.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>TX_CH1_ERR_INT_CLR</name>
+              <description>Set this bit to clear theCH1_ERR_INT interrupt.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>TX_CH2_ERR_INT_CLR</name>
+              <description>Set this bit to clear theCH2_ERR_INT interrupt.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>TX_CH3_ERR_INT_CLR</name>
+              <description>Set this bit to clear theCH3_ERR_INT interrupt.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH0_TX_THR_EVENT_INT_CLR</name>
+              <description>Set this bit to clear theCH0_TX_THR_EVENT_INT interrupt.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH1_TX_THR_EVENT_INT_CLR</name>
+              <description>Set this bit to clear theCH1_TX_THR_EVENT_INT interrupt.</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH2_TX_THR_EVENT_INT_CLR</name>
+              <description>Set this bit to clear theCH2_TX_THR_EVENT_INT interrupt.</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH3_TX_THR_EVENT_INT_CLR</name>
+              <description>Set this bit to clear theCH3_TX_THR_EVENT_INT interrupt.</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH0_TX_LOOP_INT_CLR</name>
+              <description>Set this bit to clear theCH0_TX_LOOP_INT interrupt.</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH1_TX_LOOP_INT_CLR</name>
+              <description>Set this bit to clear theCH1_TX_LOOP_INT interrupt.</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH2_TX_LOOP_INT_CLR</name>
+              <description>Set this bit to clear theCH2_TX_LOOP_INT interrupt.</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH3_TX_LOOP_INT_CLR</name>
+              <description>Set this bit to clear theCH3_TX_LOOP_INT interrupt.</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH0_RX_END_INT_CLR</name>
+              <description>Set this bit to clear theCH0_RX_END_INT interrupt.</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH1_RX_END_INT_CLR</name>
+              <description>Set this bit to clear theCH1_RX_END_INT interrupt.</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH2_RX_END_INT_CLR</name>
+              <description>Set this bit to clear theCH2_RX_END_INT interrupt.</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH3_RX_END_INT_CLR</name>
+              <description>Set this bit to clear theCH3_RX_END_INT interrupt.</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>RX_CH0_ERR_INT_CLR</name>
+              <description>Set this bit to clear theCH0_ERR_INT interrupt.</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>RX_CH1_ERR_INT_CLR</name>
+              <description>Set this bit to clear theCH1_ERR_INT interrupt.</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>RX_CH2_ERR_INT_CLR</name>
+              <description>Set this bit to clear theCH2_ERR_INT interrupt.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>RX_CH3_ERR_INT_CLR</name>
+              <description>Set this bit to clear theCH3_ERR_INT interrupt.</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH0_RX_THR_EVENT_INT_CLR</name>
+              <description>Set this bit to clear theCH0_RX_THR_EVENT_INT interrupt.</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH1_RX_THR_EVENT_INT_CLR</name>
+              <description>Set this bit to clear theCH1_RX_THR_EVENT_INT interrupt.</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH2_RX_THR_EVENT_INT_CLR</name>
+              <description>Set this bit to clear theCH2_RX_THR_EVENT_INT interrupt.</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>CH3_RX_THR_EVENT_INT_CLR</name>
+              <description>Set this bit to clear theCH3_RX_THR_EVENT_INT interrupt.</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>TX_CH0_DMA_ACCESS_FAIL_INT_CLR</name>
+              <description>Set this bit to clear the CH0_DMA_ACCESS_FAIL_INT interrupt.</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>RX_CH0_DMA_ACCESS_FAIL_INT_CLR</name>
+              <description>Set this bit to clear the CH0_DMA_ACCESS_FAIL_INT interrupt.</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>CH%sCARRIER_DUTY</name>
+          <description>Channel %s duty cycle configuration register</description>
+          <addressOffset>0x80</addressOffset>
+          <size>32</size>
+          <resetValue>0x400040</resetValue>
+          <fields>
+            <field>
+              <name>CARRIER_LOW_CH0</name>
+              <description>This register is used to configure carrier wave 's low level clock period for CHANNEL%s.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CARRIER_HIGH_CH0</name>
+              <description>This register is used to configure carrier wave 's high level clock period for CHANNEL%s.</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>16</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>CH%s_RX_CARRIER_RM</name>
+          <description>Channel %s carrier remove register</description>
+          <addressOffset>0x90</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>CARRIER_LOW_THRES_CH4</name>
+              <description>The low level period in a carrier modulation mode is (REG_RMT_REG_CARRIER_LOW_THRES_CH%s + 1) for channel %s.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CARRIER_HIGH_THRES_CH4</name>
+              <description>The high level period in a carrier modulation mode is (REG_RMT_REG_CARRIER_HIGH_THRES_CH%s + 1) for channel %s.</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>16</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>CH%s_TX_LIM</name>
+          <description>Channel %s Tx event configuration register</description>
+          <addressOffset>0xa0</addressOffset>
+          <size>32</size>
+          <resetValue>0x80</resetValue>
+          <fields>
+            <field>
+              <name>TX_LIM_CH0</name>
+              <description>This register is used to configure the maximum entries that CHANNEL%s can send out.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>9</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>TX_LOOP_NUM_CH0</name>
+              <description>This register is used to configure the maximum loop count when tx_conti_mode is valid.</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>10</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>TX_LOOP_CNT_EN_CH0</name>
+              <description>This register is the enabled bit for loop count.</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>LOOP_COUNT_RESET_CH0</name>
+              <description>This register is used to reset the loop count when tx_conti_mode is valid.</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>LOOP_STOP_EN_CH0</name>
+              <description>This bit is used to enable the loop send stop function after the loop counter counts to  loop number for CHANNEL%s.</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>4</dim>
+          <dimIncrement>0x4</dimIncrement>
+          <name>CH%s_RX_LIM</name>
+          <description>Channel %s Rx event configuration register</description>
+          <addressOffset>0xb0</addressOffset>
+          <size>32</size>
+          <resetValue>0x80</resetValue>
+          <fields>
+            <field>
+              <name>RX_LIM_CH4</name>
+              <description>This register is used to configure the maximum entries that CHANNEL%s can receive.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>9</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SYS_CONF</name>
+          <description>RMT apb configuration register</description>
+          <addressOffset>0xc0</addressOffset>
+          <size>32</size>
+          <resetValue>0x5000010</resetValue>
+          <fields>
+            <field>
+              <name>APB_FIFO_MASK</name>
+              <description>1'h1: access memory directly.   1'h0: access memory by FIFO.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>MEM_CLK_FORCE_ON</name>
+              <description>Set this bit to enable the clock for RMT memory.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>MEM_FORCE_PD</name>
+              <description>Set this bit to power down RMT memory.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>MEM_FORCE_PU</name>
+              <description>1: Disable RMT memory light sleep power down function. 0: Power down RMT memory when RMT is in light sleep mode.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SCLK_DIV_NUM</name>
+              <description>the integral part of the fractional divisor</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>8</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SCLK_DIV_A</name>
+              <description>the numerator of the fractional part of the fractional divisor</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>6</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SCLK_DIV_B</name>
+              <description>the denominator of the fractional part of the fractional divisor</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>6</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SCLK_SEL</name>
+              <description>choose the clock source of rmt_sclk. 1:CLK_80Mhz;2:CLK_8MHz; 2:XTAL</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>2</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SCLK_ACTIVE</name>
+              <description>rmt_sclk switch</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CLK_EN</name>
+              <description>RMT register clock gate enable signal. 1: Power up the drive clock of registers. 0: Power down the drive clock of registers</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>TX_SIM</name>
+          <description>RMT TX synchronous register</description>
+          <addressOffset>0xc4</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>CH0</name>
+              <description>Set this bit to enable CHANNEL0 to start sending data synchronously with other enabled channels.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH1</name>
+              <description>Set this bit to enable CHANNEL1 to start sending data synchronously with other enabled channels.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH2</name>
+              <description>Set this bit to enable CHANNEL2 to start sending data synchronously with other enabled channels.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CH3</name>
+              <description>Set this bit to enable CHANNEL3 to start sending data synchronously with other enabled channels.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EN</name>
+              <description>This register is used to enable multiple of channels to start sending data synchronously.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>REF_CNT_RST</name>
+          <description>RMT clock divider reset register</description>
+          <addressOffset>0xc8</addressOffset>
+          <size>32</size>
+          <fields>
+            <field>
+              <name>TX_CH0</name>
+              <description>This register is used to reset the clock divider of CHANNEL0.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>TX_CH1</name>
+              <description>This register is used to reset the clock divider of CHANNEL1.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>TX_CH2</name>
+              <description>This register is used to reset the clock divider of CHANNEL2.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>TX_CH3</name>
+              <description>This register is used to reset the clock divider of CHANNEL3.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>RX_CH0</name>
+              <description>This register is used to reset the clock divider of CHANNEL0.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>RX_CH1</name>
+              <description>This register is used to reset the clock divider of CHANNEL1.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>RX_CH2</name>
+              <description>This register is used to reset the clock divider of CHANNEL2.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+            <field>
+              <name>RX_CH3</name>
+              <description>This register is used to reset the clock divider of CHANNEL3.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>write-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DATE</name>
+          <description>RMT version register</description>
+          <addressOffset>0xcc</addressOffset>
+          <size>32</size>
+          <resetValue>0x2101181</resetValue>
+          <fields>
+            <field>
+              <name>DATE</name>
+              <description>This is the version register.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>28</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+      </registers>
     </peripheral>
     <peripheral>
       <name>RNG</name>
