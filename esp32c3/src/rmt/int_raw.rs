@@ -43,15 +43,30 @@ impl core::ops::Deref for CH_RX_END_INT_RAW_R {
         &self.0
     }
 }
-#[doc = "Fields `CH(0-3)_ERR_INT_RAW` reader - reg_ch%s_err_int_raw."]
-pub struct CH_ERR_INT_RAW_R(crate::FieldReader<bool, bool>);
-impl CH_ERR_INT_RAW_R {
+#[doc = "Fields `CH(0-1)_TX_ERR_INT_RAW` reader - reg_ch%s_err_int_raw."]
+pub struct CH_TX_ERR_INT_RAW_R(crate::FieldReader<bool, bool>);
+impl CH_TX_ERR_INT_RAW_R {
     #[inline(always)]
     pub(crate) fn new(bits: bool) -> Self {
-        CH_ERR_INT_RAW_R(crate::FieldReader::new(bits))
+        CH_TX_ERR_INT_RAW_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for CH_ERR_INT_RAW_R {
+impl core::ops::Deref for CH_TX_ERR_INT_RAW_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Fields `CH(2-3)_RX_ERR_INT_RAW` reader - reg_ch2_err_int_raw."]
+pub struct CH_RX_ERR_INT_RAW_R(crate::FieldReader<bool, bool>);
+impl CH_RX_ERR_INT_RAW_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        CH_RX_ERR_INT_RAW_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CH_RX_ERR_INT_RAW_R {
     type Target = crate::FieldReader<bool, bool>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
@@ -149,30 +164,35 @@ impl R {
     pub fn ch3_rx_end_int_raw(&self) -> CH_RX_END_INT_RAW_R {
         CH_RX_END_INT_RAW_R::new(((self.bits >> 3) & 1) != 0)
     }
-    #[doc = "reg_ch(0-3)_err_int_raw."]
+    #[doc = "reg_ch(0-1)_err_int_raw."]
     #[inline(always)]
-    pub unsafe fn ch_err_int_raw(&self, n: usize) -> CH_ERR_INT_RAW_R {
-        CH_ERR_INT_RAW_R::new(((self.bits >> (n + 4)) & 1) != 0)
+    pub unsafe fn ch_tx_err_int_raw(&self, n: usize) -> CH_TX_ERR_INT_RAW_R {
+        CH_TX_ERR_INT_RAW_R::new(((self.bits >> (n + 4)) & 1) != 0)
     }
     #[doc = "Bit 4 - reg_ch0_err_int_raw."]
     #[inline(always)]
-    pub fn ch0_err_int_raw(&self) -> CH_ERR_INT_RAW_R {
-        CH_ERR_INT_RAW_R::new(((self.bits >> 4) & 1) != 0)
+    pub fn ch0_tx_err_int_raw(&self) -> CH_TX_ERR_INT_RAW_R {
+        CH_TX_ERR_INT_RAW_R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - reg_ch1_err_int_raw."]
     #[inline(always)]
-    pub fn ch1_err_int_raw(&self) -> CH_ERR_INT_RAW_R {
-        CH_ERR_INT_RAW_R::new(((self.bits >> 5) & 1) != 0)
+    pub fn ch1_tx_err_int_raw(&self) -> CH_TX_ERR_INT_RAW_R {
+        CH_TX_ERR_INT_RAW_R::new(((self.bits >> 5) & 1) != 0)
+    }
+    #[doc = "reg_ch2_err_int_raw."]
+    #[inline(always)]
+    pub unsafe fn ch_rx_err_int_raw(&self, n: usize) -> CH_RX_ERR_INT_RAW_R {
+        CH_RX_ERR_INT_RAW_R::new(((self.bits >> (n - 2 + 6)) & 1) != 0)
     }
     #[doc = "Bit 6 - reg_ch2_err_int_raw."]
     #[inline(always)]
-    pub fn ch2_err_int_raw(&self) -> CH_ERR_INT_RAW_R {
-        CH_ERR_INT_RAW_R::new(((self.bits >> 6) & 1) != 0)
+    pub fn ch2_rx_err_int_raw(&self) -> CH_RX_ERR_INT_RAW_R {
+        CH_RX_ERR_INT_RAW_R::new(((self.bits >> 6) & 1) != 0)
     }
-    #[doc = "Bit 7 - reg_ch3_err_int_raw."]
+    #[doc = "Bit 7 - reg_ch2_err_int_raw."]
     #[inline(always)]
-    pub fn ch3_err_int_raw(&self) -> CH_ERR_INT_RAW_R {
-        CH_ERR_INT_RAW_R::new(((self.bits >> 7) & 1) != 0)
+    pub fn ch3_rx_err_int_raw(&self) -> CH_RX_ERR_INT_RAW_R {
+        CH_RX_ERR_INT_RAW_R::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "reg_ch(0-1)_tx_thr_event_int_raw."]
     #[inline(always)]

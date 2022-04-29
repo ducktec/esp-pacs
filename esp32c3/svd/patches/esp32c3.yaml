@@ -26,28 +26,40 @@ RMT:
     _array:
       "CH?_TX_END_INT_RAW": {}
       "CH?_RX_END_INT_RAW": {}
-      "CH?_ERR_INT_RAW": {}
+      "CH[01]_ERR_INT_RAW":
+        name: CH%s_TX_ERR_INT_RAW
+      "CH[23]_ERR_INT_RAW":
+        name: CH%s_RX_ERR_INT_RAW
       "CH?_TX_THR_EVENT_INT_RAW": {}
       "CH?_TX_LOOP_INT_RAW": {}
   INT_ST:
     _array:
       "CH?_TX_END_INT_ST": {}
       "CH?_RX_END_INT_ST": {}
-      "CH?_ERR_INT_ST": {}
+      "CH[01]_ERR_INT_ST":
+        name: CH%s_TX_ERR_INT_ST
+      "CH[23]_ERR_INT_ST":
+        name: CH%s_RX_ERR_INT_ST
       "CH?_TX_THR_EVENT_INT_ST": {}
       "CH?_TX_LOOP_INT_ST": {}
   INT_ENA:
     _array:
       "CH?_TX_END_INT_ENA": {}
       "CH?_RX_END_INT_ENA": {}
-      "CH?_ERR_INT_ENA": {}
+      "CH[01]_ERR_INT_ENA":
+        name: CH%s_TX_ERR_INT_ENA
+      "CH[23]_ERR_INT_ENA":
+        name: CH%s_RX_ERR_INT_ENA
       "CH?_TX_THR_EVENT_INT_ENA": {}
       "CH?_TX_LOOP_INT_ENA": {}
   INT_CLR:
     _array:
       "CH?_TX_END_INT_CLR": {}
       "CH?_RX_END_INT_CLR": {}
-      "CH?_ERR_INT_CLR": {}
+      "CH[01]_ERR_INT_CLR":
+        name: CH%s_TX_ERR_INT_CLR
+      "CH[23]_ERR_INT_CLR":
+        name: CH%s_RX_ERR_INT_CLR
       "CH?_TX_THR_EVENT_INT_CLR": {}
       "CH?_TX_LOOP_INT_CLR": {}
   _array:

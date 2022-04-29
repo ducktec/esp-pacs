@@ -110,27 +110,65 @@ impl<'a> CH_RX_END_INT_ENA_W<'a> {
         self.w
     }
 }
-#[doc = "Fields `CH(0-3)_ERR_INT_ENA` reader - reg_ch%s_err_int_ena."]
-pub struct CH_ERR_INT_ENA_R(crate::FieldReader<bool, bool>);
-impl CH_ERR_INT_ENA_R {
+#[doc = "Fields `CH(0-1)_TX_ERR_INT_ENA` reader - reg_ch%s_err_int_ena."]
+pub struct CH_TX_ERR_INT_ENA_R(crate::FieldReader<bool, bool>);
+impl CH_TX_ERR_INT_ENA_R {
     #[inline(always)]
     pub(crate) fn new(bits: bool) -> Self {
-        CH_ERR_INT_ENA_R(crate::FieldReader::new(bits))
+        CH_TX_ERR_INT_ENA_R(crate::FieldReader::new(bits))
     }
 }
-impl core::ops::Deref for CH_ERR_INT_ENA_R {
+impl core::ops::Deref for CH_TX_ERR_INT_ENA_R {
     type Target = crate::FieldReader<bool, bool>;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
 }
-#[doc = "Fields `CH(0-3)_ERR_INT_ENA` writer - reg_ch%s_err_int_ena."]
-pub struct CH_ERR_INT_ENA_W<'a> {
+#[doc = "Fields `CH(0-1)_TX_ERR_INT_ENA` writer - reg_ch%s_err_int_ena."]
+pub struct CH_TX_ERR_INT_ENA_W<'a> {
     w: &'a mut W,
     offset: usize,
 }
-impl<'a> CH_ERR_INT_ENA_W<'a> {
+impl<'a> CH_TX_ERR_INT_ENA_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(1 << self.offset)) | ((value as u32 & 1) << self.offset);
+        self.w
+    }
+}
+#[doc = "Fields `CH(2-3)_RX_ERR_INT_ENA` reader - reg_ch2_err_int_ena."]
+pub struct CH_RX_ERR_INT_ENA_R(crate::FieldReader<bool, bool>);
+impl CH_RX_ERR_INT_ENA_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        CH_RX_ERR_INT_ENA_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CH_RX_ERR_INT_ENA_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Fields `CH(2-3)_RX_ERR_INT_ENA` writer - reg_ch2_err_int_ena."]
+pub struct CH_RX_ERR_INT_ENA_W<'a> {
+    w: &'a mut W,
+    offset: usize,
+}
+impl<'a> CH_RX_ERR_INT_ENA_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -329,30 +367,35 @@ impl R {
     pub fn ch3_rx_end_int_ena(&self) -> CH_RX_END_INT_ENA_R {
         CH_RX_END_INT_ENA_R::new(((self.bits >> 3) & 1) != 0)
     }
-    #[doc = "reg_ch(0-3)_err_int_ena."]
+    #[doc = "reg_ch(0-1)_err_int_ena."]
     #[inline(always)]
-    pub unsafe fn ch_err_int_ena(&self, n: usize) -> CH_ERR_INT_ENA_R {
-        CH_ERR_INT_ENA_R::new(((self.bits >> (n + 4)) & 1) != 0)
+    pub unsafe fn ch_tx_err_int_ena(&self, n: usize) -> CH_TX_ERR_INT_ENA_R {
+        CH_TX_ERR_INT_ENA_R::new(((self.bits >> (n + 4)) & 1) != 0)
     }
     #[doc = "Bit 4 - reg_ch0_err_int_ena."]
     #[inline(always)]
-    pub fn ch0_err_int_ena(&self) -> CH_ERR_INT_ENA_R {
-        CH_ERR_INT_ENA_R::new(((self.bits >> 4) & 1) != 0)
+    pub fn ch0_tx_err_int_ena(&self) -> CH_TX_ERR_INT_ENA_R {
+        CH_TX_ERR_INT_ENA_R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - reg_ch1_err_int_ena."]
     #[inline(always)]
-    pub fn ch1_err_int_ena(&self) -> CH_ERR_INT_ENA_R {
-        CH_ERR_INT_ENA_R::new(((self.bits >> 5) & 1) != 0)
+    pub fn ch1_tx_err_int_ena(&self) -> CH_TX_ERR_INT_ENA_R {
+        CH_TX_ERR_INT_ENA_R::new(((self.bits >> 5) & 1) != 0)
+    }
+    #[doc = "reg_ch2_err_int_ena."]
+    #[inline(always)]
+    pub unsafe fn ch_rx_err_int_ena(&self, n: usize) -> CH_RX_ERR_INT_ENA_R {
+        CH_RX_ERR_INT_ENA_R::new(((self.bits >> (n - 2 + 6)) & 1) != 0)
     }
     #[doc = "Bit 6 - reg_ch2_err_int_ena."]
     #[inline(always)]
-    pub fn ch2_err_int_ena(&self) -> CH_ERR_INT_ENA_R {
-        CH_ERR_INT_ENA_R::new(((self.bits >> 6) & 1) != 0)
+    pub fn ch2_rx_err_int_ena(&self) -> CH_RX_ERR_INT_ENA_R {
+        CH_RX_ERR_INT_ENA_R::new(((self.bits >> 6) & 1) != 0)
     }
-    #[doc = "Bit 7 - reg_ch3_err_int_ena."]
+    #[doc = "Bit 7 - reg_ch2_err_int_ena."]
     #[inline(always)]
-    pub fn ch3_err_int_ena(&self) -> CH_ERR_INT_ENA_R {
-        CH_ERR_INT_ENA_R::new(((self.bits >> 7) & 1) != 0)
+    pub fn ch3_rx_err_int_ena(&self) -> CH_RX_ERR_INT_ENA_R {
+        CH_RX_ERR_INT_ENA_R::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "reg_ch(0-1)_tx_thr_event_int_ena."]
     #[inline(always)]
@@ -429,33 +472,41 @@ impl W {
     pub fn ch3_rx_end_int_ena(&mut self) -> CH_RX_END_INT_ENA_W {
         CH_RX_END_INT_ENA_W { w: self, offset: 3 }
     }
-    #[doc = "reg_ch(0-3)_err_int_ena."]
+    #[doc = "reg_ch(0-1)_err_int_ena."]
     #[inline(always)]
-    pub unsafe fn ch_err_int_ena(&mut self, n: usize) -> CH_ERR_INT_ENA_W {
-        CH_ERR_INT_ENA_W {
+    pub unsafe fn ch_tx_err_int_ena(&mut self, n: usize) -> CH_TX_ERR_INT_ENA_W {
+        CH_TX_ERR_INT_ENA_W {
             w: self,
             offset: n + 4,
         }
     }
     #[doc = "Bit 4 - reg_ch0_err_int_ena."]
     #[inline(always)]
-    pub fn ch0_err_int_ena(&mut self) -> CH_ERR_INT_ENA_W {
-        CH_ERR_INT_ENA_W { w: self, offset: 4 }
+    pub fn ch0_tx_err_int_ena(&mut self) -> CH_TX_ERR_INT_ENA_W {
+        CH_TX_ERR_INT_ENA_W { w: self, offset: 4 }
     }
     #[doc = "Bit 5 - reg_ch1_err_int_ena."]
     #[inline(always)]
-    pub fn ch1_err_int_ena(&mut self) -> CH_ERR_INT_ENA_W {
-        CH_ERR_INT_ENA_W { w: self, offset: 5 }
+    pub fn ch1_tx_err_int_ena(&mut self) -> CH_TX_ERR_INT_ENA_W {
+        CH_TX_ERR_INT_ENA_W { w: self, offset: 5 }
+    }
+    #[doc = "reg_ch2_err_int_ena."]
+    #[inline(always)]
+    pub unsafe fn ch_rx_err_int_ena(&mut self, n: usize) -> CH_RX_ERR_INT_ENA_W {
+        CH_RX_ERR_INT_ENA_W {
+            w: self,
+            offset: n - 2 + 6,
+        }
     }
     #[doc = "Bit 6 - reg_ch2_err_int_ena."]
     #[inline(always)]
-    pub fn ch2_err_int_ena(&mut self) -> CH_ERR_INT_ENA_W {
-        CH_ERR_INT_ENA_W { w: self, offset: 6 }
+    pub fn ch2_rx_err_int_ena(&mut self) -> CH_RX_ERR_INT_ENA_W {
+        CH_RX_ERR_INT_ENA_W { w: self, offset: 6 }
     }
-    #[doc = "Bit 7 - reg_ch3_err_int_ena."]
+    #[doc = "Bit 7 - reg_ch2_err_int_ena."]
     #[inline(always)]
-    pub fn ch3_err_int_ena(&mut self) -> CH_ERR_INT_ENA_W {
-        CH_ERR_INT_ENA_W { w: self, offset: 7 }
+    pub fn ch3_rx_err_int_ena(&mut self) -> CH_RX_ERR_INT_ENA_W {
+        CH_RX_ERR_INT_ENA_W { w: self, offset: 7 }
     }
     #[doc = "reg_ch(0-1)_tx_thr_event_int_ena."]
     #[inline(always)]

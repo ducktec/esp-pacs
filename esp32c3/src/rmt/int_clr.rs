@@ -65,12 +65,35 @@ impl<'a> CH_RX_END_INT_CLR_W<'a> {
         self.w
     }
 }
-#[doc = "Fields `CH(0-3)_ERR_INT_CLR` writer - reg_ch%s_err_int_clr."]
-pub struct CH_ERR_INT_CLR_W<'a> {
+#[doc = "Fields `CH(0-1)_TX_ERR_INT_CLR` writer - reg_ch%s_err_int_clr."]
+pub struct CH_TX_ERR_INT_CLR_W<'a> {
     w: &'a mut W,
     offset: usize,
 }
-impl<'a> CH_ERR_INT_CLR_W<'a> {
+impl<'a> CH_TX_ERR_INT_CLR_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(1 << self.offset)) | ((value as u32 & 1) << self.offset);
+        self.w
+    }
+}
+#[doc = "Fields `CH(2-3)_RX_ERR_INT_CLR` writer - reg_ch2_err_int_clr."]
+pub struct CH_RX_ERR_INT_CLR_W<'a> {
+    w: &'a mut W,
+    offset: usize,
+}
+impl<'a> CH_RX_ERR_INT_CLR_W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -212,33 +235,41 @@ impl W {
     pub fn ch3_rx_end_int_clr(&mut self) -> CH_RX_END_INT_CLR_W {
         CH_RX_END_INT_CLR_W { w: self, offset: 3 }
     }
-    #[doc = "reg_ch(0-3)_err_int_clr."]
+    #[doc = "reg_ch(0-1)_err_int_clr."]
     #[inline(always)]
-    pub unsafe fn ch_err_int_clr(&mut self, n: usize) -> CH_ERR_INT_CLR_W {
-        CH_ERR_INT_CLR_W {
+    pub unsafe fn ch_tx_err_int_clr(&mut self, n: usize) -> CH_TX_ERR_INT_CLR_W {
+        CH_TX_ERR_INT_CLR_W {
             w: self,
             offset: n + 4,
         }
     }
     #[doc = "Bit 4 - reg_ch0_err_int_clr."]
     #[inline(always)]
-    pub fn ch0_err_int_clr(&mut self) -> CH_ERR_INT_CLR_W {
-        CH_ERR_INT_CLR_W { w: self, offset: 4 }
+    pub fn ch0_tx_err_int_clr(&mut self) -> CH_TX_ERR_INT_CLR_W {
+        CH_TX_ERR_INT_CLR_W { w: self, offset: 4 }
     }
     #[doc = "Bit 5 - reg_ch1_err_int_clr."]
     #[inline(always)]
-    pub fn ch1_err_int_clr(&mut self) -> CH_ERR_INT_CLR_W {
-        CH_ERR_INT_CLR_W { w: self, offset: 5 }
+    pub fn ch1_tx_err_int_clr(&mut self) -> CH_TX_ERR_INT_CLR_W {
+        CH_TX_ERR_INT_CLR_W { w: self, offset: 5 }
+    }
+    #[doc = "reg_ch2_err_int_clr."]
+    #[inline(always)]
+    pub unsafe fn ch_rx_err_int_clr(&mut self, n: usize) -> CH_RX_ERR_INT_CLR_W {
+        CH_RX_ERR_INT_CLR_W {
+            w: self,
+            offset: n - 2 + 6,
+        }
     }
     #[doc = "Bit 6 - reg_ch2_err_int_clr."]
     #[inline(always)]
-    pub fn ch2_err_int_clr(&mut self) -> CH_ERR_INT_CLR_W {
-        CH_ERR_INT_CLR_W { w: self, offset: 6 }
+    pub fn ch2_rx_err_int_clr(&mut self) -> CH_RX_ERR_INT_CLR_W {
+        CH_RX_ERR_INT_CLR_W { w: self, offset: 6 }
     }
-    #[doc = "Bit 7 - reg_ch3_err_int_clr."]
+    #[doc = "Bit 7 - reg_ch2_err_int_clr."]
     #[inline(always)]
-    pub fn ch3_err_int_clr(&mut self) -> CH_ERR_INT_CLR_W {
-        CH_ERR_INT_CLR_W { w: self, offset: 7 }
+    pub fn ch3_rx_err_int_clr(&mut self) -> CH_RX_ERR_INT_CLR_W {
+        CH_RX_ERR_INT_CLR_W { w: self, offset: 7 }
     }
     #[doc = "reg_ch(0-1)_tx_thr_event_int_clr."]
     #[inline(always)]

@@ -50,6 +50,7 @@ extern "C" {
     fn LEDC();
     fn EFUSE();
     fn RTC_CORE();
+    fn RMT();
     fn PCNT();
     fn I2C_EXT0();
     fn I2C_EXT1();
@@ -138,7 +139,7 @@ pub static __INTERRUPTS: [Vector; 99] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _handler: RTC_CORE },
-    Vector { _reserved: 0 },
+    Vector { _handler: RMT },
     Vector { _handler: PCNT },
     Vector { _handler: I2C_EXT0 },
     Vector { _handler: I2C_EXT1 },
@@ -300,6 +301,8 @@ pub enum Interrupt {
     EFUSE = 36,
     #[doc = "39 - RTC_CORE"]
     RTC_CORE = 39,
+    #[doc = "40 - RMT"]
+    RMT = 40,
     #[doc = "41 - PCNT"]
     PCNT = 41,
     #[doc = "42 - I2C_EXT0"]
@@ -410,6 +413,7 @@ impl Interrupt {
             35 => Ok(Interrupt::LEDC),
             36 => Ok(Interrupt::EFUSE),
             39 => Ok(Interrupt::RTC_CORE),
+            40 => Ok(Interrupt::RMT),
             41 => Ok(Interrupt::PCNT),
             42 => Ok(Interrupt::I2C_EXT0),
             43 => Ok(Interrupt::I2C_EXT1),
@@ -1125,6 +1129,34 @@ impl core::fmt::Debug for PWM1 {
 }
 #[doc = "Peripheral PWM0"]
 pub use pwm0 as pwm1;
+#[doc = "Remote control"]
+pub struct RMT {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for RMT {}
+impl RMT {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const rmt::RegisterBlock = 0x6001_6000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const rmt::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for RMT {
+    type Target = rmt::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for RMT {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("RMT").finish()
+    }
+}
+#[doc = "Remote control"]
+pub mod rmt;
 #[doc = "Hardware random number generator"]
 pub struct RNG {
     _marker: PhantomData<*const ()>,
@@ -1822,6 +1854,8 @@ pub struct Peripherals {
     pub PWM0: PWM0,
     #[doc = "PWM1"]
     pub PWM1: PWM1,
+    #[doc = "RMT"]
+    pub RMT: RMT,
     #[doc = "RNG"]
     pub RNG: RNG,
     #[doc = "RSA"]
@@ -1956,6 +1990,9 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             PWM1: PWM1 {
+                _marker: PhantomData,
+            },
+            RMT: RMT {
                 _marker: PhantomData,
             },
             RNG: RNG {
